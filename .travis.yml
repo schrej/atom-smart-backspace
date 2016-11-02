@@ -12,7 +12,7 @@ env:
 
 os:
   - linux
-  - osx
+#  - osx
 
 ### Generic setup follows ###
 script:
