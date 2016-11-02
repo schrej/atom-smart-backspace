@@ -8,5 +8,4 @@
 # For more detailed documentation see
 # https://atom.io/docs/latest/behind-atom-keymaps-in-depth
 'atom-workspace':
-  'ctrl-alt-b': 'atom-hungry-backspace:toggle'
-  #'backspace': ''
+  'backspace': 'atom-smart-backspace:backspace'

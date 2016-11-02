@@ -1,14 +1,14 @@
 {
-  "name": "atom-hungry-backspace",
-  "main": "./lib/atom-hungry-backspace",
-  "version": "0.0.1",
-  "description": "Brings the hungry backspace from IntelliJ or the Hungry-Backspace Sublime plugin to Atom",
+  "name": "atom-smart-backspace",
+  "main": "./lib/atom-smart-backspace",
+  "version": "0.1.0",
+  "description": "Brings the smart backspace from IntelliJ or the Hungry-Backspace Sublime plugin to Atom",
   "keywords": [
   ],
   "activationCommands": {
-    "atom-workspace": "atom-hungry-backspace:toggle"
+    "atom-workspace": "atom-smart-backspace:backspace"
   },
-  "repository": "https://github.com/schrej/atom-hungry-backspace",
+  "repository": "https://github.com/schrej/atom-smart-backspace",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
