@@ -22,7 +22,7 @@ module.exports = AtomHungryBackspace =
     editor = atom.workspace.getActiveTextEditor()
     editorView = atom.views.getView(editor)
     
-    if editorView.classList.contains 'is-focused' # Has the editor focus?
+    if editor and editorView.classList.contains 'is-focused' # Has the editor focus?
       selections = editor.getSelections()
       
       if selections.length == 1 and selections[0].isEmpty()

@@ -1,3 +1,6 @@
+### 0.2.3
+*   fix: check if there is an active editor at all (normal backspace on settings)
+
 ### 0.2.2
 *   fix: only smart backspace if the active editor has focus
 *   fix: no smart backspace when any text is selected
