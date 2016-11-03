@@ -13,39 +13,42 @@ module.exports = AtomHungryBackspace =
   activate: (state) ->
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
-    @subscriptions.add atom.commands.add 'atom-workspace', 'smart-backspace:backspace': => @backspace()
+    @subscriptions.add atom.commands.add 'atom-text-editor', 'smart-backspace:backspace': @backspace
 
   deactivate: ->
     @subscriptions.dispose()
 
-  backspace: ->
+  backspace: (event) ->
     editor = atom.workspace.getActiveTextEditor()
-
-    cursorPositions = editor.getCursorBufferPositions()
-
-    if cursorPositions.length == 1 # Only when using one cursor
-      cursorPosition = cursorPositions[0]
-      currRow = cursorPosition.row
-      prevRow = currRow - 1
-
-      if prevRow > 0 # No hunger in the first row
-        currIndentation = editor.indentationForBufferRow currRow
-        prevIndentation = editor.indentationForBufferRow prevRow
+    editorView = atom.views.getView(editor)
+    
+    if editorView.classList.contains 'is-focused' # Has the editor focus?
+      cursorPositions = editor.getCursorBufferPositions()
+      
+      if cursorPositions.length == 1 # Only when using one cursor
+        cursorPosition = cursorPositions[0]
+        currRow = cursorPosition.row
+        prevRow = currRow - 1
         
-        if currIndentation >= prevIndentation
-          currLine = editor.lineTextForBufferRow(currRow).substr 0, cursorPosition.column
-          prevLine = editor.lineTextForBufferRow prevRow
+        if prevRow > 0 # No hunger in the first row
+          currIndentation = editor.indentationForBufferRow currRow
+          prevIndentation = editor.indentationForBufferRow prevRow
+          
+          if currIndentation >= prevIndentation
+            currLine = editor.lineTextForBufferRow(currRow).substr 0, cursorPosition.column
+            prevLine = editor.lineTextForBufferRow prevRow
 
-          if isStringBlank(currLine) && isStringBlank(prevLine)
-            missingIndentation = currIndentation - prevIndentation
-            
-            # Perform smart backspace
-            editor.transact () ->
-              editor.moveUp()
-              editor.insertText editor.getTabText() for [1..missingIndentation] if missingIndentation
-              editor.selectDown()
-              editor.backspace()
-            return
+            if isStringBlank(currLine) && isStringBlank(prevLine)
+              missingIndentation = currIndentation - prevIndentation
+              
+              # Perform smart backspace
+              editor.transact () ->
+                editor.moveUp()
+                editor.insertText editor.getTabText() for [1..missingIndentation] if missingIndentation
+                editor.selectDown()
+                editor.backspace()
+              return
 
+              
     # if we didn't
-    editor.backspace()
+    atom.commands.dispatch(event.target, 'core:backspace')
