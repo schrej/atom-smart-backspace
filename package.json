@@ -1,7 +1,7 @@
 {
   "name": "smart-backspace",
   "main": "./lib/smart-backspace",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Brings the smart backspace from IntelliJ or the Hungry-Backspace Sublime plugin to Atom",
   "keywords": [
     "editor",
