@@ -10,9 +10,7 @@
     "intellij",
     "hungry"
   ],
-  "activationCommands": {
-    "atom-workspace": "smart-backspace:backspace"
-  },
+  "activationCommands": {},
   "repository": "https://github.com/schrej/atom-smart-backspace",
   "license": "MIT",
   "engines": {
