@@ -33,7 +33,7 @@ module.exports = SmartBackspace =
           currRow = cursorPosition.row
           prevRow = currRow - 1
           
-          if prevRow > 0 # No hunger in the first row
+          if prevRow >= 0 # No hunger in the first row
             currIndentation = editor.indentationForBufferRow currRow
             prevIndentation = editor.indentationForBufferRow prevRow
             
