@@ -7,7 +7,7 @@
 ###
 isStringBlank = (str) -> str.trim().length == 0
 
-module.exports = AtomHungryBackspace =
+module.exports = SmartBackspace =
   subscriptions: null
 
   activate: (state) ->
@@ -52,6 +52,5 @@ module.exports = AtomHungryBackspace =
                   editor.backspace()
                 return
 
-              
     # if we didn't
     atom.commands.dispatch(event.target, 'core:backspace')
