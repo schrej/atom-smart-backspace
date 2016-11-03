@@ -1,12 +1,12 @@
-AtomHungryBackspace = require '../lib/atom-smart-backspace'
+AtomHungryBackspace = require '../lib/smart-backspace'
 
 # Use the command `window:run-package-specs` (cmd-alt-ctrl-p) to run specs.
 #
 # To run a specific `it` or `describe` block add an `f` to the front (e.g. `fit`
 # or `fdescribe`). Remove the `f` to unfocus the block.
 
-describe "AtomSmartBackspace", ->
+describe "SmartBackspace", ->
   [workspaceElement, activationPromise] = []
 
   beforeEach ->
-    activationPromise = atom.packages.activatePackage('atom-smart-backspace')
+    activationPromise = atom.packages.activatePackage('smart-backspace')
